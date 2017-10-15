@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+
+        #small{
+            position: relative; /*相对定位，不脱离文档流*/
+        }
+        #small img{
+            display: block;
+        }
+        #small,#big{
+            float: left;
+        }
+        #move{
+            width: 200px;
+            height: 200px;
+            background: #cccccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: .6; /*0~1*/
+            filter: alpha(opacity=60);
+            display: none;
+
+
+        }
+        #big{
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+        #big img{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="small">
+        <img src="IMG/small.jpg">
+        <div id="move"></div>
+    </div>
+    <div id="big">
+            <img src="IMG/big.jpg" id="pic-b">
+    </div>
+    <script>
+        //函数立即调用，不能再被调用
+        (function () {
+            var osmall=getById('small');
+            var omove=getById('move');
+            var obig=getById('big');
+            var obigpic=getById('pic-b');
+            osmall.onmouseover=function () {
+                omove.style.display='block';
+                obig.style.display='block';
+            }
+
+            osmall.onmouseout=function () {
+                omove.style.display='none';
+                obig.style.display='none';
+
+            }
+            osmall.onmousemove=function (e ) {
+                e = e || window.event;
+                var left= e.clientX - omove.offsetWidth/2;  //offsetWidth对象自身宽度;求出距离边框的长度
+                var top= e.clientY - omove.offsetHeight/2;  //offsetHeight对象自身高度
+                if(left< 0){
+                    left = 0;
+                }
+                if(top< 0){
+                    top = 0;
+                }
+                var xMax = osmall.offsetWidth - omove.offsetWidth;//
+                if(left> xMax){
+                    left = xMax;
+                }
+                var yMax = osmall.offsetHeight - omove.offsetHeight;
+                if(top> yMax){
+                    top = yMax;
+                }
+                omove.style.top=top+"px";
+                omove.style.left=left+"px";
+
+
+                var X = left / xMax;//算出大图片相对小图片要移动的比例:任意移动的距离/能移动的最大距离=移动的百分比
+                var Y = top/ yMax;
+
+                obigpic.style.top= -Y * (obigpic.offsetHeight - obig.offsetHeight) + "px";
+                obigpic.style.left= -X * (obigpic.offsetWidth - obig.offsetWidth) + "px";
+            }
+            function getById(id){
+                return document.getElementById(id);
+            }
+            
+
+
+        })();
+
+
+
+
+
+    </script>
+</body>
+</html>
