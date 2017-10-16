@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量的解构赋值</title>
+</head>
+<body>
+<script>
+    //数组解构，只要某种数组具有Iterator接口都可以用数组解构赋值
+   /* let [a,b,c] = [1,2,3] ;
+    let [aa,bb,[cc,dd],ee] = [1,2,[3,4],5] ;
+    let [u,t,[f],e] = [1,2,[3,4],5] ;//1,2,3,4
+    let [uu,tt,ff,ee] = [1,2,[3,4],5] ;//1,2,3,4,5 ( c=[3,4] )
+    let [x,y='b']=['a'];//允许默认值*/
+
+    /*function foo() {
+        console.log('abc');
+    }
+    let [x=f()]=[356];
+    console.log(x);*/
+
+
+    //对象解构
+    /*let{obj1,obj2} = {obj1:18 ,obj2:20}
+    const node={ //三次解构，分别对loc,start,line三个属性的解构赋值
+        loc:{
+            start:{
+                line:2,
+                num:4
+            }
+        }
+    };
+    let { loc,loc:{start},loc:{start:{line}}} = node;*/
+
+    //字符串解构
+    let [a,b,c,d] ='call' ;
+    let {length:len} ='call' ;
+
+
+</script>
+</body>
+</html>

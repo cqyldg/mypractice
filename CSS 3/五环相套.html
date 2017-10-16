@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五环</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .rang , .rang::after{
+            width: 100px;
+            height: 100px;
+            border: 6px solid;
+            border-radius: 50%;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        .rang::after{
+            content: '';
+            top: -6px;
+            left: -6px;
+        }
+        .blue{
+           border-color: blue;
+            top: 0;
+            left: 0;
+        }
+        .blue::after{
+            border-color: blue;
+            z-index: 1;
+            border-bottom-color: transparent;
+        }
+        .black{
+            border-color: black;
+            top: 0;
+            left: 130px;
+        }
+        .black::after{
+            border-color: black;
+            z-index: 1;
+            border-left-color: transparent;
+        }
+        .yellow{
+            border-color: yellow;
+            top:0;
+            left: 260px;
+        }
+        .yellow::after{
+            border-color: yellow;
+            z-index: 2;
+            border-left-color: transparent;
+        }
+
+        .red{
+            border-color: red;
+            top: 60px;
+            left: 60px;
+        }
+        .red::after{
+            border-color: red;
+
+        }
+        .green{
+            border-color:green;
+            top: 60px;
+            left: 190px;
+        }
+        .green::after{
+            border-color:green;
+            z-index: 1;
+            border-left-color: transparent;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="rang blue"></div>
+    <div class="rang black"></div>
+    <div class="rang yellow"></div>
+    <div class="rang red"></div>
+    <div class="rang green"></div>
+
+</body>
+</html>

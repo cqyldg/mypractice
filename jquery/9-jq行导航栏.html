@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style:none;
+            font-size:20px;
+        }
+        #nav{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        #nav .main{
+            float: left;/*li向左浮动*/
+            width:150px;
+            background:#ccc;
+        }
+        li{
+            background:#777;
+
+        }
+        a{
+            color:black;
+            text-decoration:none;
+            display:block;
+            padding-left:20px;
+            padding-bottom:3px;
+            padding-top:3px;
+        }
+        .main a{
+            background-image:url("./img/down.gif");
+            background-repeat:no-repeat;
+            background-position:3px center;
+
+        }
+        .main li a{
+            color:white;
+            background-image:none;
+
+        }
+        .main ul{
+            display:none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <ul>
+            <li class="main"><a href="#">菜单1</a>
+                <ul>
+                    <li><a href="#">选项1</a></li>
+                    <li><a href="#">选项2</a></li>
+                </ul>
+            </li>
+            <li class="main"><a href="#">菜单2</a>
+                <ul>
+                    <li><a href="#">选项1</a></li>
+                    <li><a href="#">选项2</a></li>
+                </ul>
+            </li>
+            <li class="main"><a href="#">菜单3</a>
+                <ul>
+                    <li><a href="#">选项1</a></li>
+                    <li><a href="#">选项2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $(".main").hover(function(){
+            $(this).children("ul").stop(false, true).slideDown("slow");
+            $(this).children("a").css("background-image","url('img/up.gif')");
+        },function(){
+            $(this).children("ul").stop(false, true).slideUp("slow");
+            $(this).children("a").css("background-image","url('img/down.gif')");
+        });
+    })
+
+
+
+</script>
+</html>

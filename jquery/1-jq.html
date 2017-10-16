@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取焦点</title>
+    <script src="jquery-1.12.4.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            margin-top: 50px;
+            margin-left: 100px;
+        }
+        input, textarea {
+            width: 12em;
+            border: 1px solid #888;
+        }
+        .focus {
+            border: 1px solid #f00;
+            background: #fcc;
+        }
+    </style>
+</head>
+<body>
+<div id="diva">
+    <form id="fm">
+        <div id="div1">
+            名称：<input id="username" type="text">
+        </div>
+        <div id="div2">
+            密码：<input id="psw" type="password">
+        </div>
+        <div id="div3">
+        详细信息：<textarea id="txtearea"></textarea>
+        </div>
+    </form>
+</div>
+
+<script>
+
+        $(function(){
+            $(":input").on("focus" ,function(){//$("input, textarea")
+                $(this).addClass("focus");
+                //$(this).css("background" "red");
+               /*$(this).css({  jquery写法
+                 background:#fcc;
+               })*/
+                //this.style.background="red" ;原生语法
+            })
+
+            }).on("blur",function(){
+                $(this).removeClass("focus");//同上四种方式
+            });
+        //链式表示： .on().on()......
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉列表左右选择</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #nav{
+            width: 400px;
+            height: 800px;
+            margin: 0 auto;
+
+        }
+        .one{
+            float: left;
+            text-align: center;
+            margin: 30px;
+        }
+        select{
+            width:100px;
+            height:160px;
+
+        }
+        span {
+            display:block;
+            margin:2px 2px;
+            padding:4px 10px;
+            background:lightpink;
+            cursor:pointer;
+            font-size:12px;
+            color:black;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //添加选中到右边
+            $("#add").on("click",function () {
+                $("#sele1 option:selected").appendTo("#sele2");//:selected 选择器只为适用于为<option>元素；子元素插入父元素
+            });
+            //添加全部到右边
+            $("#add-all").on("click",function () {
+                $("#sele1 option").appendTo("#sele2");
+            });
+            //删除选中到左边
+            $("#move").on("click",function () {
+                $("#sele2 option:selected").appendTo("#sele1");
+            });
+            //删除全部到左边
+            $("#move-all").on("click",function () {
+                $("#sele2 option").appendTo("#sele1");
+            });
+
+            //双击事件
+            $("#sele1").on("dblclick",function () {
+               $("option:selected",this).appendTo("#sele2");
+            });
+            $("#sele2").on("dblclick",function () {
+                $("option:selected",this).appendTo("#sele1");
+            });
+//对于后插入事件 给父元素绑定
+        })
+    </script>
+</head>
+<body>
+<div id="nav">
+    <div class="one">
+        <select multiple="multiple" id="sele1">
+            <option value="1">选项1</option>
+            <option value="2">选项2</option>
+            <option value="3">选项3</option>
+            <option value="4">选项4</option>
+            <option value="5">选项5</option>
+        </select>
+        <div>
+            <span id="add">添加选中选项到右边</span>
+            <span id="add-all">添加全部选项到右边</span>
+        </div>
+
+    </div>
+    <div class="one">
+        <select multiple="multiple" id="sele2">
+            <option value="6">选项6</option>
+
+        </select>
+        <div>
+            <span id="move">删除选中选项到左边</span>
+            <span id="move-all">删除所有选项到左边</span>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
